@@ -5,9 +5,7 @@ const AdminLayout = () => {
     <div>
       <p>navigatie</p>
       <p>sidebar</p>
-
       <Routes>
-        <Route path="/" element={<p>admin home</p>} />
         <Route path="competitii">
           <Route index element={<p>Competitie</p>} />
           <Route path=":id" element={<p>competitie id</p>} />

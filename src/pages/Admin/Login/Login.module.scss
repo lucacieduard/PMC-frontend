@@ -1,0 +1,89 @@
+@import "../../../utils/variables.scss";
+.container {
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(
+        316.49% 141.42% at 100% 0%,
+        #007d7e 0%,
+        #2e1f5e 32.94%,
+        #2e1f5e 49.9%,
+        #2e1f5e 50.2%,
+        #007d7e 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .form {
+        padding: 2rem;
+        border-radius: 0.6rem;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        @media (min-width: 1250px) {
+            gap: 1.8rem;
+            padding: 2.5rem 3rem;
+        }
+
+        .title {
+            color: $mov;
+            font-size: 1.5rem;
+            margin: 0 auto;
+            font-weight: 800;
+
+            @media (min-width: 1250px) {
+                font-size: 1.875rem;
+            }
+        }
+
+        .inputContainer {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            .label {
+                font-size: 0.875rem;
+                font-weight: 600;
+                color: $mov;
+            }
+            .input {
+                padding: 0.3rem 0.6rem;
+                font-size: 1.1875rem;
+                border: 1px solid $border-color;
+                border-radius: 0.3rem;
+                color: #262626;
+                font-weight: 500;
+
+                @media (min-width: 1250px) {
+                    padding: 0.5rem 0.9rem;
+                    width: 21rem;
+                }
+            }
+        }
+
+        button {
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 0.6rem 1.125rem;
+            border-radius: 0.3rem;
+            background-color: $green;
+            color: white;
+            border: none;
+            letter-spacing: 0.0125rem;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $green-hover;
+            }
+        }
+        img {
+            width: 110px;
+            margin: 0 auto;
+
+            @media (min-width: 1250px) {
+                width: 150px;
+            }
+        }
+    }
+}
