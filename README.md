@@ -1,7 +1,7 @@
-# React + TypeScript + Vite
+# Platforma management competiții
 
 Frontend repository
 
-git clone
-npm install 
-npm run dev
+ - git clone </br>
+ - npm install </br>
+ - npm run dev </br>
