@@ -1,0 +1,41 @@
+@import "../../utils/variables.scss";
+.container {
+    display: flex;
+    justify-content: space-between;
+    height: 4rem;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: #f6f6f8;
+
+    h1 {
+        gap: 0.5rem;
+        font-weight: 400;
+        font-style: italic;
+        color: $mov;
+
+        .arrow {
+            font-size: 0.6rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .text {
+            font-size: 0.85rem;
+        }
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hamburger {
+        width: 20px;
+        height: 20px;
+        color: $mov;
+
+        @media (min-width: 800px) {
+            display: none;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+@import "../utils/variables.scss";
+.container {
+    display: flex;
+    min-height: 100vh;
+    min-width: 100vw;
+
+    .page {
+        width: 100%;
+    }
+}
