@@ -4,19 +4,20 @@ import { FaArrowRight } from "react-icons/fa";
 
 type Props = {
   openSidebar: () => void;
+  message: string;
 };
 
-const Header = ({ openSidebar }: Props) => {
+const Header = ({ openSidebar, message }: Props) => {
   return (
-    <div className={styles.container}>
+    <header className={styles.container}>
       <h1>
         <span className={styles.arrow}>
           <FaArrowRight />
         </span>
-        <span className={styles.text}>Competitii</span>
+        <span className={styles.text}>{message}</span>
       </h1>
       <RxHamburgerMenu onClick={openSidebar} className={styles.hamburger} />
-    </div>
+    </header>
   );
 };
 
