@@ -13,9 +13,7 @@ const Header = ({ openSidebar }: Props) => {
         <span className={styles.arrow}>
           <FaArrowRight />
         </span>
-        <span className={styles.text}>
-          Competitii - Cupa atletis junior 2024
-        </span>
+        <span className={styles.text}>Competitii</span>
       </h1>
       <RxHamburgerMenu onClick={openSidebar} className={styles.hamburger} />
     </div>
