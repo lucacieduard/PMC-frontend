@@ -72,8 +72,11 @@
                 line-height: 140%; /* 1.4rem */
                 letter-spacing: 0.0125rem;
                 color: white;
-                padding-left: 1rem;
                 margin-bottom: 0.5rem;
+
+                @media (min-width: 800px) {
+                    padding-left: 1rem;
+                }
             }
             .navLink {
                 font-size: 1rem;
