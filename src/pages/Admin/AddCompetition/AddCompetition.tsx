@@ -12,6 +12,7 @@ const AddCompetition = ({ openSidebar }: Props) => {
       <Header openSidebar={openSidebar} message="Adaugă competiție" />
       <main className={styles.page}>
         <GeneralInfo />
+        
       </main>
     </div>
   );
