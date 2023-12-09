@@ -1,5 +1,6 @@
 import Header from "../../../components/PageHeader/Header";
 import styles from "./AddCompetition.module.scss";
+import Categories from "./Categories";
 import GeneralInfo from "./GeneralInfo";
 
 type Props = {
@@ -12,7 +13,7 @@ const AddCompetition = ({ openSidebar }: Props) => {
       <Header openSidebar={openSidebar} message="Adaugă competiție" />
       <main className={styles.page}>
         <GeneralInfo />
-        
+        <Categories />
       </main>
     </div>
   );

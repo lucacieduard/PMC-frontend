@@ -16,7 +16,7 @@ label {
 input {
     border-radius: 0.3125rem;
     border: 1px solid #c8c8c8;
-    padding: 0.7rem 0.3rem;
+    padding: 0.5rem 0.3rem;
     color: #262626;
 
     &:focus {
@@ -28,21 +28,24 @@ input {
     }
 }
 
+.title {
+    color: #262626;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+
+    @media (min-width: 1100px) {
+        font-size: 1.3rem;
+    }
+}
+
 .container {
     .page {
         padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
 
         .generalInfo {
-            .title {
-                color: #262626;
-                font-size: 1rem;
-                margin-bottom: 0.5rem;
-
-                @media (min-width: 1100px) {
-                    font-size: 1.3rem;
-                }
-            }
-
             .fields {
                 display: flex;
                 flex-direction: column;
@@ -86,6 +89,197 @@ input {
                         }
                         input {
                             flex: 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        .categoriesContainer {
+            .title {
+                color: #262626;
+                font-size: 1rem;
+                margin-bottom: 0.5rem;
+
+                @media (min-width: 1100px) {
+                    font-size: 1.3rem;
+                }
+            }
+            label {
+                display: block;
+                margin-bottom: 0.3rem;
+            }
+            .input {
+                border-radius: 0.3125rem;
+                border: 1px solid #c8c8c8;
+                width: fit-content;
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                max-width: 500px;
+                input {
+                    border: none;
+                    width: 100%;
+                }
+                button {
+                    background-color: $green;
+                    cursor: pointer;
+                    color: white;
+                    padding: 0.3rem 0.7rem;
+                    border: none;
+                    border-top-right-radius: 0.3125rem;
+                    border-bottom-right-radius: 0.3125rem;
+                    font-weight: 700;
+                    font-size: 0.7rem;
+
+                    @media (min-width: 1100px) {
+                        font-size: 1rem;
+                    }
+
+                    &:hover {
+                        background-color: $green-hover;
+                    }
+                }
+            }
+
+            .probe {
+                display: flex;
+                flex-direction: column;
+                border: 1px solid $border-color;
+                margin-top: 1rem;
+                border-radius: 0.315rem;
+
+                .category {
+                    padding: 1rem 0.5rem;
+                    border-bottom: 1px solid $border-color;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+                    &:nth-last-child(1) {
+                        border-bottom: none;
+                    }
+
+                    @media (min-width: 1000px) {
+                        flex-direction: row;
+                        gap: 1rem;
+                    }
+
+                    .left {
+                        @media (min-width: 1000px) {
+                            flex: 1;
+                        }
+                        .title {
+                            color: #000;
+                            font-size: 0.8rem;
+                            font-style: normal;
+                            font-weight: 700;
+                            line-height: 140%; /* 2.1rem */
+                            letter-spacing: 0.0125rem;
+                            display: flex;
+                            align-items: center;
+                            gap: 0.3rem;
+
+                            @media (min-width: 1000px) {
+                                font-size: 1rem;
+                            }
+
+                            .icon {
+                                cursor: pointer;
+                            }
+                        }
+                        .inputContainer {
+                            .input {
+                                max-width: none;
+                            }
+
+                            .control {
+                                margin-top: 0.5rem;
+                                display: flex;
+                                gap: 1rem;
+                                .checkBoxContainer {
+                                    display: flex;
+                                    align-items: center;
+                                    gap: 0.3rem;
+                                    input {
+                                    }
+                                    label {
+                                        margin-bottom: unset;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .right {
+                        display: flex;
+                        gap: 0.3rem;
+                        flex-wrap: wrap;
+                        align-items: flex-start;
+
+                        @media (min-width: 1000px) {
+                            flex: 1;
+                            gap: 0.5rem;
+                        }
+
+                        .tiket {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 2.5rem;
+                            padding: 0.5rem 1rem;
+                            border: 1px solid #1f7e9a;
+                            background: #e2f5fc;
+                            width: fit-content;
+                            gap: 0.3rem;
+                            flex: 1;
+
+                            @media (min-width: 1000px) {
+                                gap: 0.5rem;
+                            }
+
+                            .probaContainer {
+                                .titlee {
+                                    color: #1f7e9a;
+                                    font-size: 0.75rem;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    line-height: 120%; /* 0.9rem */
+                                    letter-spacing: 0.0125rem;
+                                }
+
+                                .proba {
+                                    color: #2e1f5e;
+                                    font-size: 0.875rem;
+                                    font-style: normal;
+                                    font-weight: 600;
+                                    line-height: 150%; /* 1.3125rem */
+                                    letter-spacing: 0.0125rem;
+                                }
+                            }
+                            .selectorContainer {
+                                display: flex;
+                                align-items: center;
+                                flex-direction: column;
+                                justify-content: center;
+                                .titlee {
+                                    color: #1f7e9a;
+                                    font-size: 0.75rem;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    line-height: 120%; /* 0.9rem */
+                                    letter-spacing: 0.0125rem;
+                                }
+
+                                .icons {
+                                    display: flex;
+                                    .icon {
+                                        height: 100%;
+                                    }
+                                }
+                            }
+                            .trash {
+                                color: $mov;
+                                cursor: pointer;
+                            }
                         }
                     }
                 }
