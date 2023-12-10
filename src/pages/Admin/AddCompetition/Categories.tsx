@@ -1,4 +1,4 @@
-import { Proba, Rules } from "./AddCompetition";
+import { Proba, Rules } from "../../../types/competitie";
 import styles from "./AddCompetition.module.scss";
 import Category from "./Category";
 import { useState } from "react";

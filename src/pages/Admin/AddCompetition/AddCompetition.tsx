@@ -1,4 +1,5 @@
 import Header from "../../../components/PageHeader/Header";
+import { Proba, Rules } from "../../../types/competitie";
 import styles from "./AddCompetition.module.scss";
 import Categories from "./Categories";
 import GeneralInfo from "./GeneralInfo";
@@ -8,26 +9,7 @@ type Props = {
   openSidebar: () => void;
 };
 
-export type Proba = {
-  nume: string;
-  serii: boolean;
-  finala: boolean;
-};
 
-export type Categorie = {
-  nume: string;
-  probe: Proba[];
-};
-
-export type Rules = {
-  nume: string;
-  locatie: string;
-  startCompetitie: string;
-  sfarsitCompetitie: string;
-  startInscrieri: string;
-  sfarsitInscrieri: string;
-  categorii: Categorie[];
-};
 
 const AddCompetition = ({ openSidebar }: Props) => {
   const [rules, setRules] = useState<Rules>({

@@ -2,7 +2,7 @@ import styles from "./AddCompetition.module.scss";
 import { FaCheck } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
-import { Proba } from "./AddCompetition";
+import { Proba } from "../../../types/competitie";
 
 type Props = {
   proba: Proba;

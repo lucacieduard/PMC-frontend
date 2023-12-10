@@ -1,4 +1,4 @@
-import { Rules } from "./AddCompetition";
+import { Rules } from "../../../types/competitie";
 import styles from "./AddCompetition.module.scss";
 
 type Props = {

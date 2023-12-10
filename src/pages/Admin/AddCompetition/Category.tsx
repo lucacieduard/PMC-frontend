@@ -1,8 +1,8 @@
 import styles from "./AddCompetition.module.scss";
 import { FaTrashAlt } from "react-icons/fa";
 import Tiket from "./Tiket";
-import { Categorie, Proba } from "./AddCompetition";
 import { useState } from "react";
+import { Categorie, Proba } from "../../../types/competitie";
 
 type Props = {
   category: Categorie;
