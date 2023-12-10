@@ -2,18 +2,112 @@ import Header from "../../../components/PageHeader/Header";
 import styles from "./AddCompetition.module.scss";
 import Categories from "./Categories";
 import GeneralInfo from "./GeneralInfo";
+import { useState } from "react";
 
 type Props = {
   openSidebar: () => void;
 };
 
+export type Proba = {
+  nume: string;
+  serii: boolean;
+  finala: boolean;
+};
+
+export type Categorie = {
+  nume: string;
+  probe: Proba[];
+};
+
+export type Rules = {
+  nume: string;
+  locatie: string;
+  startCompetitie: string;
+  sfarsitCompetitie: string;
+  startInscrieri: string;
+  sfarsitInscrieri: string;
+  categorii: Categorie[];
+};
+
 const AddCompetition = ({ openSidebar }: Props) => {
+  const [rules, setRules] = useState<Rules>({
+    nume: "",
+    locatie: "",
+    startCompetitie: "",
+    sfarsitCompetitie: "",
+    startInscrieri: "",
+    sfarsitInscrieri: "",
+    categorii: [],
+  });
+  console.log(rules);
+
+  const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setRules((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const addCategory = (categoryName: string) => {
+    setRules((prev) => {
+      const categorii = prev.categorii;
+      categorii.unshift({
+        nume: categoryName,
+        probe: [],
+      });
+      return { ...prev, categorii: categorii };
+    });
+  };
+
+  const addProba = (proba: Proba, categoryName: string) => {
+    setRules((prev) => {
+      return {
+        ...prev,
+        categorii: prev.categorii.map((categorie) => {
+          if (categorie.nume === categoryName) {
+            categorie.probe.unshift(proba);
+            return categorie;
+          } else {
+            return categorie;
+          }
+        }),
+      };
+    });
+  };
+
+  const deleteCategory = (categoryName: string) => {
+    setRules((prev) => ({
+      ...prev,
+      categorii: prev.categorii.filter(
+        (categorie) => categorie.nume !== categoryName
+      ),
+    }));
+  };
+
+  const deleteProba = (categoryName: string, probaNume: string) => {
+    setRules((prev) => ({
+      ...prev,
+      categorii: prev.categorii.map((categorie) => {
+        if (categorie.nume === categoryName) {
+          return {
+            ...categorie,
+            probe: categorie.probe.filter((proba) => proba.nume !== probaNume),
+          };
+        } else {
+          return categorie;
+        }
+      }),
+    }));
+  };
+
   return (
     <div className={styles.container}>
       <Header openSidebar={openSidebar} message="Adaugă competiție" />
       <main className={styles.page}>
-        <GeneralInfo />
-        <Categories />
+        <GeneralInfo rules={rules} changeRules={changeHandler} />
+        <Categories
+          addCategory={addCategory}
+          rules={rules}
+          addProba={addProba}
+          deleteCategory={deleteCategory}
+          deleteProba={deleteProba}
+        />
       </main>
     </div>
   );

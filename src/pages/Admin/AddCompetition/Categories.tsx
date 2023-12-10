@@ -1,23 +1,58 @@
+import { Proba, Rules } from "./AddCompetition";
 import styles from "./AddCompetition.module.scss";
 import Category from "./Category";
+import { useState } from "react";
 
-const Categories = () => {
+type Props = {
+  addCategory: (categoryName: string) => void;
+  rules: Rules;
+  addProba: (proba: Proba, categoryName: string) => void;
+  deleteCategory: (categoryName: string) => void;
+  deleteProba: (categoryName: string, probaNume: string) => void;
+};
+
+const Categories = ({
+  addCategory,
+  rules,
+  addProba,
+  deleteCategory,
+  deleteProba,
+}: Props) => {
+  const [category, setCategory] = useState<string>("");
   return (
     <section className={styles.categoriesContainer}>
       <h2 className={styles.title}>Categorii de vârstă și probe</h2>
       <div className={styles.inputContainer}>
         <label htmlFor="categorie">Categorie de vârstă</label>
         <div className={styles.input}>
-          <input type="text" id="categorie" />
-          <button>Adaugă</button>
+          <input
+            type="text"
+            id="categorie"
+            onChange={(e) => setCategory(e.target.value)}
+            value={category}
+          />
+          <button
+            onClick={() => {
+              addCategory(category);
+              setCategory("");
+            }}
+          >
+            Adaugă
+          </button>
         </div>
       </div>
 
       <div className={styles.probe}>
-        <Category />
-        <Category />
-        <Category />
-        <Category />
+        {rules.categorii.map((category) => {
+          return (
+            <Category
+              category={category}
+              addProba={addProba}
+              deleteCategory={deleteCategory}
+              deleteProba={deleteProba}
+            />
+          );
+        })}
       </div>
     </section>
   );
