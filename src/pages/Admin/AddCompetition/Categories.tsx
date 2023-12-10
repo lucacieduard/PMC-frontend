@@ -41,19 +41,20 @@ const Categories = ({
           </button>
         </div>
       </div>
-
-      <div className={styles.probe}>
-        {rules.categorii.map((category) => {
-          return (
-            <Category
-              category={category}
-              addProba={addProba}
-              deleteCategory={deleteCategory}
-              deleteProba={deleteProba}
-            />
-          );
-        })}
-      </div>
+      {rules.categorii.length > 0 && (
+        <div className={styles.probe}>
+          {rules.categorii.map((category) => {
+            return (
+              <Category
+                category={category}
+                addProba={addProba}
+                deleteCategory={deleteCategory}
+                deleteProba={deleteProba}
+              />
+            );
+          })}
+        </div>
+      )}
     </section>
   );
 };
