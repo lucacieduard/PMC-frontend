@@ -92,6 +92,7 @@ const Category = ({
                 name="finala"
                 onChange={changeHandler}
                 checked={proba.finala}
+                min={0}
               />
               <label>Finala</label>
             </div>
@@ -105,6 +106,7 @@ const Category = ({
                   name="atletiPerSerie"
                   value={proba.atletiPerSerie}
                   onChange={changeHandler}
+                  min={0}
                 />{" "}
               </p>
             )}
