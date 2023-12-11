@@ -2,6 +2,8 @@ export type Proba = {
     nume: string;
     serii: boolean;
     finala: boolean;
+    atletiPerSerie: number, 
+    atletiFinala : number
   };
   
   export type Categorie = {

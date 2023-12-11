@@ -21,15 +21,18 @@ const Category = ({
     nume: "",
     serii: false,
     finala: false,
+    atletiFinala: 0,
+    atletiPerSerie: 0,
   });
 
   console.log(proba);
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.type);
     if (e.target.type === "checkbox") {
       setProba((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
     }
-    if (e.target.type === "text") {
+    if (e.target.type === "text" || e.target.type === "number") {
       setProba((prev) => ({
         ...prev,
         [e.target.name]: e.target.value,
@@ -65,6 +68,8 @@ const Category = ({
                   nume: "",
                   serii: false,
                   finala: false,
+                  atletiFinala: 0,
+                  atletiPerSerie: 0,
                 });
               }}
             >
@@ -90,6 +95,31 @@ const Category = ({
               />
               <label>Finala</label>
             </div>
+          </div>
+          <div className={styles.numbers}>
+            {proba.serii && (
+              <p>
+                <label>Atleti per serie</label>
+                <input
+                  type="number"
+                  name="atletiPerSerie"
+                  value={proba.atletiPerSerie}
+                  onChange={changeHandler}
+                />{" "}
+              </p>
+            )}
+
+            {proba.finala && (
+              <p>
+                <label>Atleti in finala</label>
+                <input
+                  type="number"
+                  name="atletiFinala"
+                  value={proba.atletiFinala}
+                  onChange={changeHandler}
+                />{" "}
+              </p>
+            )}
           </div>
         </div>
       </div>
