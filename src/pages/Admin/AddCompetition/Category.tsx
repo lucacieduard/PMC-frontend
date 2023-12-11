@@ -126,9 +126,10 @@ const Category = ({
         </div>
       </div>
       <div className={styles.right}>
-        {category.probe.map((proba) => {
+        {category.probe.map((proba, index) => {
           return (
             <Tiket
+              key={index}
               proba={proba}
               deleteProba={deleteProba}
               categoryName={category.nume}

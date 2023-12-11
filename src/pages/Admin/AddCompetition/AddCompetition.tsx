@@ -1,6 +1,7 @@
 import Header from "../../../components/PageHeader/Header";
 import { Proba, Rules } from "../../../types/competitie";
 import styles from "./AddCompetition.module.scss";
+import Administrative from "./Administrative";
 import Categories from "./Categories";
 import GeneralInfo from "./GeneralInfo";
 import { useState } from "react";
@@ -8,8 +9,6 @@ import { useState } from "react";
 type Props = {
   openSidebar: () => void;
 };
-
-
 
 const AddCompetition = ({ openSidebar }: Props) => {
   const [rules, setRules] = useState<Rules>({
@@ -20,11 +19,15 @@ const AddCompetition = ({ openSidebar }: Props) => {
     startInscrieri: "",
     sfarsitInscrieri: "",
     categorii: [],
+    competitieVizibila: false,
   });
-  console.log(rules);
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRules((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    if (e.target.type === "checkbox") {
+      setRules((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
+    } else {
+      setRules((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    }
   };
   const addCategory = (categoryName: string) => {
     setRules((prev) => {
@@ -90,6 +93,10 @@ const AddCompetition = ({ openSidebar }: Props) => {
           deleteCategory={deleteCategory}
           deleteProba={deleteProba}
         />
+        <Administrative changeRules={changeHandler} rules={rules} />
+        <button className={styles.button} onClick={() => console.log(rules)}>
+          Adauga Competitie
+        </button>
       </main>
     </div>
   );

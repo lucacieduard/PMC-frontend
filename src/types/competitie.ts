@@ -19,4 +19,5 @@ export type Proba = {
     startInscrieri: string;
     sfarsitInscrieri: string;
     categorii: Categorie[];
+    competitieVizibila : boolean
   };

@@ -43,9 +43,10 @@ const Categories = ({
       </div>
       {rules.categorii.length > 0 && (
         <div className={styles.probe}>
-          {rules.categorii.map((category) => {
+          {rules.categorii.map((category, index) => {
             return (
               <Category
+                key={index}
                 category={category}
                 addProba={addProba}
                 deleteCategory={deleteCategory}
