@@ -1,5 +1,4 @@
 import styles from "./AddCompetition.module.scss";
-import { FaCheck } from "react-icons/fa";
 import { FaTrashAlt } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
 import { Proba } from "../../../types/competitie";
@@ -22,14 +21,15 @@ const Tiket = ({ proba, deleteProba, categoryName }: Props) => {
         <div className={styles.icons}>
           <p>
             {proba.serii ? (
-              <FaCheck color="green" className={styles.icon} />
+              proba.atletiPerSerie
             ) : (
               <MdClose color="red" className={styles.icon} />
             )}
           </p>
+          /
           <p>
             {proba.finala ? (
-              <FaCheck color="green" className={styles.icon} />
+              proba.atletiFinala
             ) : (
               <MdClose color="red" className={styles.icon} />
             )}
