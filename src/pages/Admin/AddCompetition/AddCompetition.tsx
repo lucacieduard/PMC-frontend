@@ -94,7 +94,10 @@ const AddCompetition = ({ openSidebar }: Props) => {
           deleteProba={deleteProba}
         />
         <Administrative changeRules={changeHandler} rules={rules} />
-        <button className={styles.button} onClick={() => console.log(rules)}>
+        <button
+          className={`${styles.button} button`}
+          onClick={() => console.log(rules)}
+        >
           Adauga Competitie
         </button>
       </main>

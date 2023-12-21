@@ -9,7 +9,9 @@ const Competition = () => {
         className={styles.banner}
         alt="competition banner"
       />
-      <button className={styles.button}>Acceseaza competitia</button>
+      <button className={`button ${styles.button}`}>
+        Acceseaza competitia
+      </button>
     </div>
   );
 };

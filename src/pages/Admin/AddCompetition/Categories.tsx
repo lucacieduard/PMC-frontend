@@ -32,6 +32,7 @@ const Categories = ({
             value={category}
           />
           <button
+            className={`button`}
             onClick={() => {
               addCategory(category);
               setCategory("");
