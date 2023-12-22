@@ -25,3 +25,27 @@
     background-color: $green-hover;
   }
 }
+
+.wrapper {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @media (min-width: 640px) {
+    max-width: 640px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 768px;
+  }
+  @media (min-width: 1024px) {
+    max-width: 1024px;
+  }
+  @media (min-width: 1366px) {
+    max-width: 1366px;
+  }
+  @media (min-width: 1563px) {
+    max-width: 1563px;
+  }
+}
