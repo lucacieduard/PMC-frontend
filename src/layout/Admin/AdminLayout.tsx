@@ -1,12 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import styles from "./AdminLayout.module.scss";
-import Sidebar from "../components/Sidebar/Sidebar";
+import Sidebar from "../../components/Sidebar/Sidebar";
 import { Suspense, lazy, useState } from "react";
 const Competitions = lazy(
-  () => import("../pages/Admin/Competitions/Competitions")
+  () => import("../../pages/Admin/Competitions/Competitions")
 );
 const AddCompetition = lazy(
-  () => import("../pages/Admin/AddCompetition/AddCompetition")
+  () => import("../../pages/Admin/AddCompetition/AddCompetition")
 );
 
 const AdminLayout = () => {

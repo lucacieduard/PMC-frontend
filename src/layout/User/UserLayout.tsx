@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import styles from "./UserLayout.module.scss";
-import NavBar from "../components/NavBarUser/NavBar";
-import Footer from "../components/FooterUser/Footer";
+import NavBar from "../../components/NavBarUser/NavBar";
+import Footer from "../../components/FooterUser/Footer";
 import { Suspense, lazy } from "react";
 
 const CompetitionsPage = lazy(
-  () => import("../pages/User/Competitions/CompetitionsPage")
+  () => import("../../pages/User/Competitions/CompetitionsPage")
 );
 
-const UserCompetitionLayout = lazy(() => import("../layout/UserCompetition"));
+const UserCompetitionLayout = lazy(() => import("./UserCompetition"));
 
 const UserLayout = () => {
   return (

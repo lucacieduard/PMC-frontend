@@ -3,7 +3,7 @@ import styles from "./UserCompetition.module.scss";
 import { Suspense, lazy } from "react";
 
 const CompetitionInfo = lazy(
-  () => import("../pages/User/CompetitionInfo/CompetitionInfo")
+  () => import("../../pages/User/CompetitionInfo/CompetitionInfo")
 );
 
 const UserCompetitionLayout = () => {
