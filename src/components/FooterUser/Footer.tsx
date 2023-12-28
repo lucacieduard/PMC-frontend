@@ -7,7 +7,7 @@ const Footer = () => {
         <img
           className={styles.logo}
           alt="atletis logo"
-          src="logo_faraNume.png"
+          src="/logo_faraNume.png"
         />
 
         <a
