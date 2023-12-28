@@ -2,8 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import styles from "./AdminLayout.module.scss";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { Suspense, lazy, useState } from "react";
-// import AddCompetition from "../pages/Admin/AddCompetition/AddCompetition";
-// import Competitions from "../pages/Admin/Competitions/Competitions";
 const Competitions = lazy(
   () => import("../pages/Admin/Competitions/Competitions")
 );
