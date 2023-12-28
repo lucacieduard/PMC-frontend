@@ -1,12 +1,13 @@
 @import "../../utils/variables.scss";
 
 .footer {
-    height: 4rem;
+    height: 4.5rem;
     background-color: $mov;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: white;
+    color: $white;
+    font-weight: 500;
     .logo {
         height: 3rem;
     }

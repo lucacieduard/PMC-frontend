@@ -12,10 +12,7 @@ const UserLayout = () => {
   return (
     <div className={styles.container}>
       <NavBar />
-      <div
-        className="wrapper"
-        style={{ paddingTop: "1rem", paddingBottom: "1rem" }}
-      >
+      <div className={`${styles.page} wrapper`}>
         <Suspense fallback={<p>Loading</p>}>
           <Routes>
             <Route path="competitii">
