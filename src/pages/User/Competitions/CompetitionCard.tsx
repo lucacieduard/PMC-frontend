@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Competitions.module.scss";
 
 const CompetitionCard = () => {
@@ -11,7 +12,11 @@ const CompetitionCard = () => {
         Inscrieri active :
       </p>
       <img className={styles.competitionBanner} src="banner.jpg" />
-      <button className={`button ${styles.competitionButton}`}>Mai mult</button>
+      <Link to={"/competitii/1"}>
+        <button className={`button ${styles.competitionButton}`}>
+          Mai mult
+        </button>
+      </Link>
     </div>
   );
 };

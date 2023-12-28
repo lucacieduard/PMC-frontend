@@ -8,16 +8,18 @@ const CompetitionsPage = lazy(
   () => import("../pages/User/Competitions/CompetitionsPage")
 );
 
+const UserCompetitionLayout = lazy(() => import("../layout/UserCompetition"));
+
 const UserLayout = () => {
   return (
     <div className={styles.container}>
       <NavBar />
       <div className={`${styles.page} wrapper`}>
-        <Suspense fallback={<p>Loading</p>}>
+        <Suspense fallback={<p>Loading...</p>}>
           <Routes>
             <Route path="competitii">
               <Route index element={<CompetitionsPage />} />
-              <Route path=":id" element={<p>comp id</p>} />
+              <Route path=":id/*" element={<UserCompetitionLayout />} />
             </Route>
           </Routes>
         </Suspense>
