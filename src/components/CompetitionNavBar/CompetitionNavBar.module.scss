@@ -1,0 +1,70 @@
+@import "../../utils/variables.scss";
+
+.navigation {
+    background-color: $mov;
+    border-radius: 0 0 27px 27px;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0 2rem 1rem;
+    position: relative;
+
+    @media (min-width: 1024px) {
+        border-radius: 0 0 30px 30px;
+    }
+
+    &::before {
+        content: "";
+        width: 30px;
+        height: 37px;
+        background-color: red;
+        position: absolute;
+        left: -20px;
+        top: -8px;
+        clip-path: polygon(100% 0, 0 0, 100% 100%);
+        background-color: $mov;
+
+        @media (min-width: 1024px) {
+            top: -6px;
+            left: -19px;
+        }
+    }
+    &::after {
+        content: "";
+        width: 30px;
+        height: 37px;
+        background-color: red;
+        position: absolute;
+        right: -20px;
+        top: -8px;
+        background-color: $mov;
+        clip-path: polygon(2% 100%, 0 0, 100% 0);
+        @media (min-width: 1024px) {
+            top: -6px;
+            right: -19px;
+        }
+    }
+    .navLink {
+        color: white;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 400;
+
+        @media (min-width: 1024px) {
+            font-size: 1rem;
+        }
+    }
+
+    .active {
+        font-weight: 800;
+    }
+}
+
+.hide {
+    display: none;
+}

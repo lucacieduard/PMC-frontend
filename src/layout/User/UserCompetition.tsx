@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import styles from "./UserCompetition.module.scss";
 import { Suspense, lazy } from "react";
+import CompetitionNavBar from "../../components/CompetitionNavBar/CompetitionNavBar";
 
 const CompetitionInfo = lazy(
   () => import("../../pages/User/CompetitionInfo/CompetitionInfo")
@@ -9,7 +10,7 @@ const CompetitionInfo = lazy(
 const UserCompetitionLayout = () => {
   return (
     <div className={styles.page}>
-      <nav>Nav</nav>
+      <CompetitionNavBar />
       <Suspense fallback={<p>Loading...</p>}>
         <Routes>
           <Route path="/" element={<CompetitionInfo />} />
