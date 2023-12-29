@@ -1,7 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./Sidebar.module.scss";
 import { IoMdClose } from "react-icons/io";
-import { FaRegUser } from "react-icons/fa";
+// import { FaRegUser } from "react-icons/fa";
 
 type Props = {
   changeVisible: () => void;
@@ -72,8 +72,11 @@ const Sidebar = (props: Props) => {
       </nav>
 
       <div className={styles.footer}>
-        <FaRegUser />
-        <span>Administrator</span>
+        {/* <FaRegUser />
+        <span>Administrator</span> */}
+        <Link to={"/competitii"} style={{ color: "white" }}>
+          User APP
+        </Link>
       </div>
     </div>
   );
