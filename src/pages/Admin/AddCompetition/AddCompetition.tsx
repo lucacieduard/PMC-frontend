@@ -1,7 +1,7 @@
 import Header from "../../../components/PageHeader/Header";
 import { Proba, Rules } from "../../../types/competitie";
 import styles from "./AddCompetition.module.scss";
-import Administrative from "./Administrative";
+// import Administrative from "./Administrative";
 import Categories from "./Categories";
 import GeneralInfo from "./GeneralInfo";
 import { useState } from "react";
@@ -19,7 +19,6 @@ const AddCompetition = ({ openSidebar }: Props) => {
     startInscrieri: "",
     sfarsitInscrieri: "",
     categorii: [],
-    competitieVizibila: false,
   });
 
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -93,7 +92,7 @@ const AddCompetition = ({ openSidebar }: Props) => {
           deleteCategory={deleteCategory}
           deleteProba={deleteProba}
         />
-        <Administrative changeRules={changeHandler} rules={rules} />
+        {/* <Administrative changeRules={changeHandler} rules={rules} /> */}
         <button
           className={`${styles.button} button`}
           onClick={() => console.log(rules)}

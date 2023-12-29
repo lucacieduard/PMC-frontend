@@ -5,7 +5,7 @@ const CompetitionsPage = () => {
   return (
     <div className={styles.page}>
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Competiti viitoare</h2>
+        <h2 className={styles.sectionTitle}>Competiti active</h2>
         <div className={styles.competitions}>
           <CompetitionCard />
           <CompetitionCard />
