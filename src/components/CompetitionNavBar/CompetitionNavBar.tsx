@@ -13,6 +13,15 @@ const CompetitionNavBar = () => {
         Informatii
       </NavLink>
       <NavLink
+        to={"inscriere"}
+        className={({ isActive }) =>
+          isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink}`
+        }
+        end
+      >
+        Inscriere
+      </NavLink>
+      <NavLink
         to={"program"}
         className={({ isActive }) =>
           isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink}`
@@ -38,15 +47,6 @@ const CompetitionNavBar = () => {
         end
       >
         Rezultate
-      </NavLink>
-      <NavLink
-        to={"inscriere"}
-        className={({ isActive }) =>
-          isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink}`
-        }
-        end
-      >
-        Inscriere
       </NavLink>
     </div>
   );
