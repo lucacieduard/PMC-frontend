@@ -1,7 +1,6 @@
 import styles from "./CompetitionProgram.module.scss";
 import { ScrollMode, ViewMode, Worker } from "@react-pdf-viewer/core";
 import { Viewer } from "@react-pdf-viewer/core";
-import "@react-pdf-viewer/default-layout/lib/styles/index.css";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import { toolbarPlugin } from "@react-pdf-viewer/toolbar";
 
@@ -46,7 +45,7 @@ const CompetitionProgram = () => {
           <Toolbar>{renderDefaultToolbar(transform)}</Toolbar>
         </div>
         <Viewer
-          fileUrl="d"
+          fileUrl={`${import.meta.env.VITE_API_URL}/pdf/program/program.pdf`}
           scrollMode={ScrollMode.Vertical}
           theme={{
             theme: "light",
