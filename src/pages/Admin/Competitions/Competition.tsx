@@ -1,11 +1,19 @@
+import { Rules } from "../../../types/competitie";
 import styles from "./Competitions.module.scss";
-const Competition = () => {
+
+const Competition = ({ competition }: { competition: Rules }) => {
   return (
     <div className={styles.competition}>
-      <h2 className={styles.compTitle}>Cupa Atletis Junior 2023</h2>
-      <p className={styles.period}>Competitie: 10-02-2023 11-02-2023</p>
+      <h2 className={styles.compTitle}>{competition.nume}</h2>
+      <p className={styles.period}>
+        Competitie:{" "}
+        {competition.startCompetitie.split("T")[0].replaceAll("-", ".")} -{" "}
+        {competition.sfarsitCompetitie.split("T")[0].replaceAll("-", ".")}
+      </p>
       <img
-        src="/banner.jpg"
+        src={`${import.meta.env.VITE_API_URL}/img/banners/${
+          competition.banner
+        }`}
         className={styles.banner}
         alt="competition banner"
       />
