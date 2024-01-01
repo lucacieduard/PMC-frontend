@@ -3,6 +3,7 @@ import Header from "../../../components/PageHeader/Header";
 import Competition from "./Competition";
 import styles from "./Competitions.module.scss";
 import { ResponseCompetitions } from "../../../types/competitie";
+import { getAllCompetitions } from "../../../utils/fetch/competitions";
 
 type Props = {
   openSidebar: () => void;
@@ -11,13 +12,7 @@ type Props = {
 const Competitions = ({ openSidebar }: Props) => {
   const { isLoading, isError, data } = useQuery<ResponseCompetitions>({
     queryKey: ["competitions"],
-    queryFn: () =>
-      fetch(`${import.meta.env.VITE_API_URL}/api/competitii`).then(
-        (response) => {
-          if (!response.ok) throw new Error();
-          return response.json();
-        }
-      ),
+    queryFn: getAllCompetitions,
     staleTime: 1000 * 60 * 5,
   });
 

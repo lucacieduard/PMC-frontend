@@ -4,19 +4,14 @@ import "leaflet/dist/leaflet.css";
 import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { ResponseCompetition } from "../../../types/competitie";
+import { getOneCompetition } from "../../../utils/fetch/competitions";
 
 const CompetitionInfo = () => {
-  const { id } = useParams();
+  const { id: slug } = useParams();
 
   const { isLoading, isError, data } = useQuery<ResponseCompetition>({
-    queryKey: ["competitions", id],
-    queryFn: () =>
-      fetch(`${import.meta.env.VITE_API_URL}/api/competitii/${id}`).then(
-        (response) => {
-          if (!response.ok) throw new Error();
-          return response.json();
-        }
-      ),
+    queryKey: ["competitions", slug],
+    queryFn: () => getOneCompetition(slug),
     staleTime: 1000 * 60 * 5,
   });
 
@@ -77,7 +72,7 @@ const CompetitionInfo = () => {
         <div className={styles.inscrieri}>
           <h3>Pentru inscrieri accesati </h3>
 
-          <Link to={`/competitii/${id}/inscriere`}>
+          <Link to={`/competitii/${slug}/inscriere`}>
             <button className={`button ${styles.button}`}>Inscriere!</button>
           </Link>
         </div>

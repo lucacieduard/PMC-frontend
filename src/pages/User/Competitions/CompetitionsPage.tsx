@@ -2,18 +2,12 @@ import { useQuery } from "@tanstack/react-query";
 import CompetitionCard from "./CompetitionCard";
 import styles from "./Competitions.module.scss";
 import { ResponseCompetitions } from "../../../types/competitie";
+import { getAllCompetitions } from "../../../utils/fetch/competitions";
 
 const CompetitionsPage = () => {
   const competitionQuery = useQuery<ResponseCompetitions, Error>({
     queryKey: ["competitions"],
-    queryFn: () =>
-      fetch(`${import.meta.env.VITE_API_URL}/api/competitii`).then(
-        (response) => {
-          console.log(response);
-          if (!response.ok) throw new Error();
-          return response.json();
-        }
-      ),
+    queryFn: getAllCompetitions,
     staleTime: 1000 * 60 * 5,
     // refetchInterval: 1000,
   });
