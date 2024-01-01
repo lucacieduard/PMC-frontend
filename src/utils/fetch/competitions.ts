@@ -26,3 +26,12 @@ export const createCompetition = async (data : FormData) : Promise<ResponseCompe
     console.log(response)
     return response.json()
 }
+
+export const deleteCompetition = async (id :string) => {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/competitii/${id}`, {
+        method:"DELETE",
+
+    })
+    if(!response.ok) throw new Error()
+    return response.json()
+}
