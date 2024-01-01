@@ -11,6 +11,7 @@ import Categories from "./Categories";
 import GeneralInfo from "./GeneralInfo";
 import { useState } from "react";
 import { createCompetition } from "../../../utils/fetch/competitions";
+import { toast } from "react-toastify";
 
 type Props = {
   openSidebar: () => void;
@@ -117,6 +118,7 @@ const AddCompetition = ({ openSidebar }: Props) => {
           }
         }
       );
+      toast.success("Competitie adaugata cu succes!");
 
       setRules({
         nume: "",
@@ -130,6 +132,7 @@ const AddCompetition = ({ openSidebar }: Props) => {
     },
     onError: (error, varibles) => {
       console.log(error, varibles);
+      toast.error("Eroare! Mai incearca!");
     },
   });
 
