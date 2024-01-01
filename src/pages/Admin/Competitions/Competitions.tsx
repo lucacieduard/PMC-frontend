@@ -25,7 +25,7 @@ const Competitions = ({ openSidebar }: Props) => {
         <h1>Toate competitiile</h1>
         <div className={styles.competitions}>
           {data?.data.competitions.map((competition) => (
-            <Competition competition={competition} />
+            <Competition competition={competition} key={competition._id} />
           ))}
         </div>
       </div>

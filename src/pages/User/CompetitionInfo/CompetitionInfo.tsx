@@ -65,7 +65,7 @@ const CompetitionInfo = () => {
                 competition ? [competition.lat, competition.lng] : [20, 40]
               }
             >
-              <Popup>{data?.data.competition.locatie}</Popup>
+              <Popup>{competition?.locatie}</Popup>
             </Marker>
           </MapContainer>
         </div>
