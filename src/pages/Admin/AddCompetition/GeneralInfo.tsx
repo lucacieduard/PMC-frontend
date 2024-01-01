@@ -1,8 +1,8 @@
-import { Rules } from "../../../types/competitie";
+import { FormData } from "./AddCompetition";
 import styles from "./AddCompetition.module.scss";
 
 type Props = {
-  rules: Rules;
+  rules: FormData;
   changeRules: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 

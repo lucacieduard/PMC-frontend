@@ -1,11 +1,12 @@
-import { Proba, Rules } from "../../../types/competitie";
+import { Proba} from "../../../types/competitie";
+import { FormData } from "./AddCompetition";
 import styles from "./AddCompetition.module.scss";
 import Category from "./Category";
 import { useState } from "react";
 
 type Props = {
   addCategory: (categoryName: string) => void;
-  rules: Rules;
+  rules: FormData;
   addProba: (proba: Proba, categoryName: string) => void;
   deleteCategory: (categoryName: string) => void;
   deleteProba: (categoryName: string, probaNume: string) => void;

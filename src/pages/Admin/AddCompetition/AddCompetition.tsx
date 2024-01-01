@@ -1,5 +1,5 @@
 import Header from "../../../components/PageHeader/Header";
-import { Proba, Rules } from "../../../types/competitie";
+import { Proba, Categorie } from "../../../types/competitie";
 import styles from "./AddCompetition.module.scss";
 // import Administrative from "./Administrative";
 import Categories from "./Categories";
@@ -10,8 +10,18 @@ type Props = {
   openSidebar: () => void;
 };
 
+export type FormData = {
+  nume: string;
+  locatie: string;
+  startCompetitie: string;
+  sfarsitCompetitie: string;
+  startInscrieri: string;
+  sfarsitInscrieri: string;
+  categorii: Categorie[];
+};
+
 const AddCompetition = ({ openSidebar }: Props) => {
-  const [rules, setRules] = useState<Rules>({
+  const [rules, setRules] = useState<FormData>({
     nume: "",
     locatie: "",
     startCompetitie: "",
