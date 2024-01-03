@@ -7,13 +7,15 @@ const Login = () => {
         <img src="login.png" className={styles.image} />
         <form className={styles.form}>
           <h2 className={styles.title}>Conectare</h2>
-          <div className={styles.field}>
-            <label>Email</label>
-            <input type="email" />
-          </div>
-          <div className={styles.field}>
-            <label>Parola</label>
-            <input type="password" />
+          <div>
+            <div className={styles.field}>
+              <label>Email</label>
+              <input type="email" />
+            </div>
+            <div className={styles.field}>
+              <label>Parola</label>
+              <input type="password" />
+            </div>
           </div>
           <button className={`${styles.button} button`}>Conectare</button>
         </form>
