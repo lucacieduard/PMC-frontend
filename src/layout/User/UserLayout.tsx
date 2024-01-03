@@ -9,6 +9,7 @@ const CompetitionsPage = lazy(
 );
 const UserCompetitionLayout = lazy(() => import("./UserCompetition"));
 const Register = lazy(() => import("../../pages/User/Register/Register"));
+const Login = lazy(() => import("../../pages/User/Login/Login"));
 const UserLayout = () => {
   return (
     <div className={styles.container}>
@@ -21,6 +22,7 @@ const UserLayout = () => {
               <Route path=":id/*" element={<UserCompetitionLayout />} />
             </Route>
             <Route path="creeaza-cont" element={<Register />} />
+            <Route path="conectare" element={<Login />} />
           </Routes>
         </Suspense>
       </div>
