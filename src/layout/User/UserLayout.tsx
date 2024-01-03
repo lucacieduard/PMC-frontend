@@ -7,9 +7,8 @@ import { Suspense, lazy } from "react";
 const CompetitionsPage = lazy(
   () => import("../../pages/User/Competitions/CompetitionsPage")
 );
-
 const UserCompetitionLayout = lazy(() => import("./UserCompetition"));
-
+const Register = lazy(() => import("../../pages/User/Register/Register"));
 const UserLayout = () => {
   return (
     <div className={styles.container}>
@@ -21,6 +20,7 @@ const UserLayout = () => {
               <Route index element={<CompetitionsPage />} />
               <Route path=":id/*" element={<UserCompetitionLayout />} />
             </Route>
+            <Route path="creeaza-cont" element={<Register />} />
           </Routes>
         </Suspense>
       </div>
