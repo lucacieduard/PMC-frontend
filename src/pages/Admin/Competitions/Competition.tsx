@@ -6,17 +6,8 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import ReactModal from "react-modal";
 import { toast } from "react-toastify";
+import ModalMessage from "../../../components/Modal/ModalMessage";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-  },
-};
 ReactModal.setAppElement("#root");
 
 const Competition = ({ competition }: { competition: Rules }) => {
@@ -54,33 +45,12 @@ const Competition = ({ competition }: { competition: Rules }) => {
       <button className={`button ${styles.button}`}>
         Acceseaza competitia
       </button>
-      <ReactModal
-        isOpen={modal}
-        style={customStyles}
-        // className={styles.ReactModal__Content}
-      >
-        <h3> Esti sigur ca doresti sa stergi competitia ?</h3>
-        <p style={{ textAlign: "center", color: "red" }}>{competition.nume}</p>
-        <div style={{ textAlign: "right", marginTop: "1rem" }}>
-          <button
-            className="button"
-            onClick={() => setModal(false)}
-            style={{ borderRadius: "0.326rem" }}
-          >
-            Inchide
-          </button>
-          <button
-            className="button"
-            onClick={() => {
-              handlerDelete();
-              setModal(false);
-            }}
-            style={{ borderRadius: "0.326rem", marginLeft: "1rem" }}
-          >
-            Sterge
-          </button>
-        </div>
-      </ReactModal>
+      <ModalMessage
+        state={modal}
+        action={handlerDelete}
+        text={"Esti sigur ca doresti sa stergi aceasta competitie?"}
+        closeModal={() => setModal(false)}
+      />
     </div>
   );
 };
