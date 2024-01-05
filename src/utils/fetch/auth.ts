@@ -47,3 +47,15 @@ export const persistLogin = async (): Promise<ResponseLogin> => {
   if (!response.ok) throw new Error()
   return response.json()
 }
+
+export const logout = async (): Promise<void> => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/utilizatori/deconectare`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "GET",
+    credentials: "include"
+  })
+  if (!response.ok) throw new Error()
+  return response.json()
+}

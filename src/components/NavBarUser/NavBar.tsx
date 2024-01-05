@@ -2,11 +2,25 @@ import styles from "./NavBar.module.scss";
 import { TiThMenu } from "react-icons/ti";
 import { IoMdClose } from "react-icons/io";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { useMutation } from "@tanstack/react-query";
+import { logout } from "../../utils/fetch/auth";
+import { toast } from "react-toastify";
 
 const NavBar = () => {
+  const { setAuth } = useContext(AuthContext);
+  const logoutMutation = useMutation({
+    mutationFn: logout,
+    onSuccess: (data) => {
+      console.log(data);
+      setAuth(null);
+      toast.success("Te-ai deconectat cu succes!");
+    },
+  });
   const [visible, setVisible] = useState(false);
+  const { user } = useContext(AuthContext);
   return (
     <div style={{ background: "#2e1f5e" }}>
       <nav className={`wrapper ${styles.navbar}`}>
@@ -43,28 +57,41 @@ const NavBar = () => {
           >
             Competiții
           </NavLink>
-          <NavLink
-            to={"/conectare"}
-            className={({ isActive }) =>
-              isActive
-                ? `${styles.navLink} ${styles.active}`
-                : `${styles.navLink}`
-            }
-            end
-          >
-            Conectare
-          </NavLink>
-          <NavLink
-            to={"/creeaza-cont"}
-            className={({ isActive }) =>
-              isActive
-                ? `${styles.navLink} ${styles.active}`
-                : `${styles.navLink}`
-            }
-            end
-          >
-            Creează cont
-          </NavLink>
+          {!user ? (
+            <>
+              <NavLink
+                to={"/conectare"}
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.navLink} ${styles.active}`
+                    : `${styles.navLink}`
+                }
+                end
+              >
+                Conectare
+              </NavLink>
+              <NavLink
+                to={"/creeaza-cont"}
+                className={({ isActive }) =>
+                  isActive
+                    ? `${styles.navLink} ${styles.active}`
+                    : `${styles.navLink}`
+                }
+                end
+              >
+                Creează cont
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <span>
+                {user.nume} {user.prenume}
+              </span>{" "}
+              <button onClick={() => logoutMutation.mutate()}>
+                Deconectare
+              </button>
+            </>
+          )}
         </div>
       </nav>
     </div>
