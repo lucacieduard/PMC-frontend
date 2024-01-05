@@ -5,8 +5,22 @@ import UserLayout from "./layout/User/UserLayout";
 import Login from "./pages/Admin/Login/Login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useContext, useEffect } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { persistLogin } from "./utils/fetch/auth";
+import { AuthContext } from "./context/AuthContext";
 
 function App() {
+  const authContext = useContext(AuthContext)
+  const persistMutation = useMutation({
+    mutationFn: persistLogin,
+    onSuccess: (data) => {
+      authContext.setAuth(data.user)
+    }
+  })
+  useEffect(() => {
+    persistMutation.mutate();
+  }, []);
   return (
     <>
       <ToastContainer

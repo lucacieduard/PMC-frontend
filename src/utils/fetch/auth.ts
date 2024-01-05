@@ -35,3 +35,15 @@ export const login = async (data: { email: string, parola: string }): Promise<Re
   console.log(response)
   return response.json()
 }
+
+export const persistLogin = async (): Promise<ResponseLogin> => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/utilizatori/persistLogin`, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "GET",
+    credentials: "include"
+  })
+  if (!response.ok) throw new Error()
+  return response.json()
+}
