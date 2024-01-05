@@ -1,3 +1,5 @@
+import { ResponseLogin, ResponseSignup } from "../../types/user"
+
 export const signup = async (data: {
   nume: string,
   prenume: string,
@@ -6,7 +8,7 @@ export const signup = async (data: {
   clubSportiv: string,
   parola: string,
   confirmParola: string
-}) => {
+}): Promise<ResponseSignup> => {
   const response = await fetch(`${import.meta.env.VITE_API_URL}/api/utilizatori/creeaza-cont`, {
     headers: {
       "Content-Type": "application/json",
@@ -20,7 +22,7 @@ export const signup = async (data: {
   return response.json()
 }
 
-export const login = async (data: { email: string, parola: string }) => {
+export const login = async (data: { email: string, parola: string }): Promise<ResponseLogin> => {
   const response = await fetch(`${import.meta.env.VITE_API_URL}/api/utilizatori/autentificare`, {
     headers: {
       "Content-Type": "application/json",

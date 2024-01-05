@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./Register.module.scss";
 import { useMutation } from "@tanstack/react-query";
 import { signup } from "../../../utils/fetch/auth";
+import { AuthContext } from "../../../context/AuthContext";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 const Register = () => {
   const [form, setForm] = useState({
     nume: "",
@@ -13,10 +16,18 @@ const Register = () => {
     confirmParola: "",
   });
 
+  const authContext = useContext(AuthContext);
+  const navigate = useNavigate();
   const signUpMutation = useMutation({
     mutationFn: signup,
     onSuccess: (data) => {
-      console.log(data);
+      authContext.setAuth(data.newUser);
+      toast.success("Contul a fost creat cu succes!");
+      navigate("/competitii");
+    },
+    onError: (error) => {
+      console.log(error);
+      toast.error("A aparut o eroare!");
     },
   });
   const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,15 +40,6 @@ const Register = () => {
       return;
     }
     signUpMutation.mutate(form);
-    setForm({
-      nume: "",
-      prenume: "",
-      email: "",
-      telefon: "",
-      clubSportiv: "",
-      parola: "",
-      confirmParola: "",
-    });
   };
   return (
     <div className={styles.container}>
