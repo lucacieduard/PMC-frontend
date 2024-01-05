@@ -25,7 +25,8 @@ export type Proba = {
     _id : string,
     activaFlag : boolean,
     slug : string,
-    inscrieriFlag: boolean
+    inscrieriFlag: boolean,
+    program : null | string
   };
 
   export type ResponseCompetitions = {
