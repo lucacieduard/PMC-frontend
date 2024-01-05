@@ -10,7 +10,7 @@ const Login = () => {
     e.preventDefault();
     console.log(form);
     const response = await fetch(
-      "http://localhost:3050/api/utilizatori/autentificare",
+      `${import.meta.env.VITE_API_URL}/api/utilizatori/autentificare`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
