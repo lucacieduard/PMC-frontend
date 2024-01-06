@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "./Footer.module.scss";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 const Footer = () => {
+  const { user } = useContext(AuthContext);
   return (
     <footer style={{ background: "#2e1f5e" }}>
       <div className={`${styles.footer} wrapper`}>
@@ -18,9 +21,11 @@ const Footer = () => {
           &#169; Lucaci Eduard
         </a>
 
-        <Link to={"/admin"} className={styles.admin}>
-          Administrare{" "}
-        </Link>
+        {user?.role === "admin" && (
+          <Link to={"/admin"} className={styles.admin}>
+            Administrare{" "}
+          </Link>
+        )}
       </div>
     </footer>
   );

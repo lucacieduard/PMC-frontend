@@ -5,23 +5,32 @@ import UserLayout from "./layout/User/UserLayout";
 import Login from "./pages/Admin/Login/Login";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useContext, useEffect } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useContext, useEffect, useState } from "react";
 import { persistLogin } from "./utils/fetch/auth";
 import { AuthContext } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 function App() {
-  const authContext = useContext(AuthContext)
-  const persistMutation = useMutation({
-    mutationFn: persistLogin,
-    onSuccess: (data) => {
-      authContext.setAuth(data.user)
+  const authContext = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
+
+  const persistlogin = async () => {
+    try {
+      const data = await persistLogin();
+      authContext.setAuth(data.user ? data.user : null);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
     }
-  })
+  };
   useEffect(() => {
-    persistMutation.mutate();
+    persistlogin();
   }, []);
-  return (
+
+  return loading ? (
+    <p>Loading </p>
+  ) : (
     <>
       <ToastContainer
         position="bottom-right"
@@ -37,8 +46,22 @@ function App() {
       />
       <Routes>
         <Route path="/*" element={<UserLayout />} />
-        <Route path="/admin" element={<Login />} />
-        <Route path="admin/*" element={<AdminLayout />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <Login />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="admin/*"
+          element={
+            <ProtectedRoute>
+              <AdminLayout />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </>
   );

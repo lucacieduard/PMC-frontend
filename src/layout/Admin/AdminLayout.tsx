@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import styles from "./AdminLayout.module.scss";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { Suspense, lazy, useState } from "react";
+import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 const Competitions = lazy(
   () => import("../../pages/Admin/Competitions/Competitions")
 );
@@ -22,10 +23,15 @@ const AdminLayout = () => {
             <Route path="competitii">
               <Route
                 index
-                element={<Competitions openSidebar={changeVisible} />}
+                element={
+                  <ProtectedRoute>
+                    <Competitions openSidebar={changeVisible} />
+                  </ProtectedRoute>
+                }
               />
               <Route path=":id" element={<p>competitie id</p>} />
             </Route>
+
             <Route
               path="adauga"
               element={<AddCompetition openSidebar={changeVisible} />}

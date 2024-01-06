@@ -45,7 +45,7 @@ export const persistLogin = async (): Promise<ResponseLogin> => {
     credentials: "include"
   })
   if (!response.ok) throw new Error()
-  return response.json()
+  return await response.json()
 }
 
 export const logout = async (): Promise<void> => {

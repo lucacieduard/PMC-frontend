@@ -14,7 +14,6 @@ export const AuthContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [user, setUser] = useState<null | User>(null);
-  console.log(user);
   const setAuth = (user: User | null) => {
     setUser(user);
   };

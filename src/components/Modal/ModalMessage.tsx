@@ -25,6 +25,7 @@ const ModalMessage = (props: Props) => {
       isOpen={props.state}
       style={customStyles}
       // className={styles.ReactModal__Content}
+      
     >
       <h3> {props.text}</h3>
       <div style={{ textAlign: "right", marginTop: "1rem" }}>
