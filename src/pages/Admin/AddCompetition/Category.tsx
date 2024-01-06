@@ -62,6 +62,7 @@ const Category = ({
               value={proba.nume}
             />
             <button
+              className="button"
               onClick={() => {
                 addProba(proba, category.nume);
                 setProba({
