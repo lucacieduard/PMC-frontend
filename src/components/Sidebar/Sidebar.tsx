@@ -44,6 +44,17 @@ const Sidebar = (props: Props) => {
             Competitii
           </NavLink>
           <NavLink
+            to="/admin/utilizatori"
+            className={({ isActive }) =>
+              isActive
+                ? `${styles.navLink} ${styles.active}`
+                : `${styles.navLink}`
+            }
+            end
+          >
+            Utilizatori
+          </NavLink>
+          <NavLink
             to="/admin/adauga"
             className={({ isActive }) =>
               isActive

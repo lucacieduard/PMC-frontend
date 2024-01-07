@@ -1,5 +1,5 @@
 import ReactModal from "react-modal";
-
+import styles from "./ModalMessage.module.scss";
 const customStyles = {
   content: {
     top: "50%",
@@ -16,6 +16,9 @@ type Props = {
   text: string;
   closeModal: () => void;
   action: () => void;
+  type: "message" | "children";
+  children?: React.ReactNode;
+  buttonText: string;
 };
 
 ReactModal.setAppElement("#root");
@@ -25,27 +28,29 @@ const ModalMessage = (props: Props) => {
       isOpen={props.state}
       style={customStyles}
       // className={styles.ReactModal__Content}
-      
     >
-      <h3> {props.text}</h3>
-      <div style={{ textAlign: "right", marginTop: "1rem" }}>
-        <button
-          className="button"
-          onClick={props.closeModal}
-          style={{ borderRadius: "0.326rem" }}
-        >
-          Inchide
-        </button>
-        <button
-          className="button"
-          onClick={() => {
-            props.action();
-            props.closeModal();
-          }}
-          style={{ borderRadius: "0.326rem", marginLeft: "1rem" }}
-        >
-          Sterge
-        </button>
+      <div className={styles.container}>
+        <h3> {props.text}</h3>
+        {props.type === "children" && props.children}
+        <div style={{ textAlign: "right", marginTop: "1rem" }}>
+          <button
+            className="button"
+            onClick={props.closeModal}
+            style={{ borderRadius: "0.326rem" }}
+          >
+            Inchide
+          </button>
+          <button
+            className="button"
+            onClick={() => {
+              props.action();
+              props.closeModal();
+            }}
+            style={{ borderRadius: "0.326rem", marginLeft: "1rem" }}
+          >
+            {props.buttonText}
+          </button>
+        </div>
       </div>
     </ReactModal>
   );

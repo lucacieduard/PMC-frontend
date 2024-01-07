@@ -46,6 +46,8 @@ const Competition = ({ competition }: { competition: Rules }) => {
         Acceseaza competitia
       </button>
       <ModalMessage
+        type="message"
+        buttonText="Sterge"
         state={modal}
         action={handlerDelete}
         text={"Esti sigur ca doresti sa stergi aceasta competitie?"}
