@@ -32,7 +32,13 @@ const CompetitionInfo = () => {
             {competition?.sfarsitInscrieri.split("T")[0].replaceAll("-", ".")}
           </p>
         </div>
-        <h3 className={styles.message}>Inscrierile sunt deschise ! </h3>
+        {competition?.inscrieriFlag ? (
+          <h3 className={styles.message}>Inscrierile sunt deschise ! </h3>
+        ) : (
+          <h3 className={styles.message} style={{ color: "red" }}>
+            Inscrierile sunt inchise !{" "}
+          </h3>
+        )}
 
         <div className={styles.date}>
           <p className={styles.text}>Perioada Competitie</p>

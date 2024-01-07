@@ -65,26 +65,9 @@ const Sidebar = (props: Props) => {
             Adauga competitie
           </NavLink>
         </div>
-        <div className={styles.part}>
-          <p className={styles.title}>Competitie</p>
-          <div className={styles.links}>
-            <NavLink
-              to="/admin/competitii/1"
-              className={({ isActive }) =>
-                isActive
-                  ? `${styles.navLink} ${styles.active}`
-                  : `${styles.navLink}`
-              }
-            >
-              Acasa
-            </NavLink>
-          </div>
-        </div>
       </nav>
 
       <div className={styles.footer}>
-        {/* <FaRegUser />
-        <span>Administrator</span> */}
         <Link to={"/competitii"} style={{ color: "white" }}>
           User APP
         </Link>
