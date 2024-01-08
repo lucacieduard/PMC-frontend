@@ -25,7 +25,11 @@ const AdminLayout = () => {
                 index
                 element={<Competitions openSidebar={changeVisible} />}
               />
-              <Route path=":id" element={<p>competitie id</p>} />
+              <Route path=":id" element={<p>competitie id</p>}>
+                <Route path="program" element={<p>program</p>} />
+                <Route path="clasament" element={<p>clasament</p>} />
+                <Route path="regulament" element={<p>regulament</p>} />
+              </Route>
             </Route>
 
             <Route
@@ -34,8 +38,9 @@ const AdminLayout = () => {
             />
             <Route
               path="utilizatori"
-              element={<Users openSidebar={changeVisible} />}/>
-          </Routes>{" "}
+              element={<Users openSidebar={changeVisible} />}
+            />
+          </Routes>
         </Suspense>
       </div>
     </div>

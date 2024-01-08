@@ -7,6 +7,7 @@ import { useState } from "react";
 import ReactModal from "react-modal";
 import { toast } from "react-toastify";
 import ModalMessage from "../../../components/Modal/ModalMessage";
+import { NavLink } from "react-router-dom";
 
 ReactModal.setAppElement("#root");
 
@@ -42,9 +43,11 @@ const Competition = ({ competition }: { competition: Rules }) => {
         className={styles.banner}
         alt="competition banner"
       />
-      <button className={`button ${styles.button}`}>
-        Acceseaza competitia
-      </button>
+      <NavLink to={`/admin/competitii/${competition._id}`}>
+        <button className={`button ${styles.button}`}>
+          Acceseaza competitia
+        </button>
+      </NavLink>
       <ModalMessage
         type="message"
         buttonText="Sterge"

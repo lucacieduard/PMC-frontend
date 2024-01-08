@@ -1,16 +1,21 @@
 import styles from "./NavBar.module.scss";
 import { TiThMenu } from "react-icons/ti";
 import { IoMdClose } from "react-icons/io";
-
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import { useMutation } from "@tanstack/react-query";
 import { logout } from "../../utils/fetch/auth";
 import { toast } from "react-toastify";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import { IconButton } from "@mui/material";
 
 const NavBar = () => {
-  const { setAuth } = useContext(AuthContext);
+  const { setAuth, user } = useContext(AuthContext);
+  const [visible, setVisible] = useState(false);
+  const [show, setShow] = useState(false);
+
   const logoutMutation = useMutation({
     mutationFn: logout,
     onSuccess: (data) => {
@@ -19,8 +24,6 @@ const NavBar = () => {
       toast.success("Te-ai deconectat cu succes!");
     },
   });
-  const [visible, setVisible] = useState(false);
-  const { user } = useContext(AuthContext);
   return (
     <div style={{ background: "#2e1f5e" }}>
       <nav className={`wrapper ${styles.navbar}`}>
@@ -83,14 +86,35 @@ const NavBar = () => {
               </NavLink>
             </>
           ) : (
-            <>
-              <span>
-                {user.nume} {user.prenume}
-              </span>{" "}
-              <button onClick={() => logoutMutation.mutate()}>
-                Deconectare
-              </button>
-            </>
+            <div
+              className={styles.user}
+              onMouseEnter={() => setShow(true)}
+              onMouseLeave={() => setShow(false)}
+            >
+              <IconButton className={styles.icon}>
+                <AccountCircleIcon style={{ color: "white" }} />
+                <ArrowDropDownIcon
+                  style={{ color: "white" }}
+                  className={styles.icon}
+                />
+              </IconButton>
+              {show && (
+                <div className={`${styles.subNav}`}>
+                  <p className={styles.name}>
+                    Bună {user.nume} {user.prenume} !
+                  </p>
+                  <button
+                    className={`${styles.logout} button`}
+                    onClick={() => {
+                      logoutMutation.mutate();
+                      setShow(false);
+                    }}
+                  >
+                    Deconectare
+                  </button>
+                </div>
+              )}
+            </div>
           )}
         </div>
       </nav>
