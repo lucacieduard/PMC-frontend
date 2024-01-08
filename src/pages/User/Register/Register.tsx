@@ -121,7 +121,17 @@ const Register = () => {
             </div>
           </div>
 
-          <button className={`${styles.button} button`}>Creează cont</button>
+          <button
+            className={`${styles.button} button`}
+            disabled={!!authContext.user || signUpMutation.isPending}
+          >
+            Creează cont
+          </button>
+          {authContext.user && (
+            <p style={{ color: "red" }}>
+              Esti deja conectat! Deconecteaza-te pentru a creea un cont nou.
+            </p>
+          )}
         </form>
       </div>
     </div>

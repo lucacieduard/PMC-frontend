@@ -135,6 +135,12 @@
                 padding: 0.5rem 1rem;
                 border-radius: 0.325rem;
                 margin-top: 1rem;
+
+                &:disabled {
+                    background-color: #c8c8c8;
+                    color: white;
+                    cursor: not-allowed;
+                }
             }
         }
     }

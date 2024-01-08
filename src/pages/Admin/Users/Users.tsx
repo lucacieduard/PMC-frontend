@@ -1,7 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import Header from "../../../components/PageHeader/Header";
 import styles from "./Users.module.scss";
-import { DataGrid, GridColDef, GridRowParams } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  GridColDef,
+  GridRowParams,
+  GridToolbar,
+} from "@mui/x-data-grid";
 import { getAllUsers } from "../../../utils/fetch/users";
 import { User } from "../../../types/user";
 import { useMemo } from "react";
@@ -23,14 +28,25 @@ const Users = ({ openSidebar }: Props) => {
       {
         field: "nume",
         headerName: "Nume",
-        width: 150,
+        minWidth: 150,
+        maxWidth: 200,
         sortable: true,
         filterable: true,
         editable: true,
       },
-      { field: "prenume", headerName: "Prenume", width: 150, editable: true },
-      { field: "email", headerName: "Email", width: 250, editable: true },
-      { field: "telefon", headerName: "Telefon", width: 150, editable: true },
+      {
+        field: "prenume",
+        headerName: "Prenume",
+        minWidth: 150,
+        editable: true,
+      },
+      { field: "email", headerName: "Email", minWidth: 250, editable: true },
+      {
+        field: "telefon",
+        headerName: "Telefon",
+        minWidth: 150,
+        editable: true,
+      },
       {
         field: "clubSportiv",
         headerName: "Club Sportiv",
@@ -77,12 +93,14 @@ const Users = ({ openSidebar }: Props) => {
             initialState={{
               pagination: { paginationModel: { pageSize: 5, page: 0 } },
             }}
-            editMode="cell"
+            editMode="row"
             density="comfortable"
             getRowSpacing={(params) => ({
               top: params.isFirstVisible ? 0 : 5,
               bottom: params.isLastVisible ? 0 : 5,
             })}
+            slots={{ toolbar: GridToolbar }}
+            disableRowSelectionOnClick
           />
         </div>
       </main>

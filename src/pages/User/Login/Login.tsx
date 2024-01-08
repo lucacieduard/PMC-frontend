@@ -55,7 +55,15 @@ const Login = () => {
               />
             </div>
           </div>
-          <button className={`${styles.button} button`}>Conectare</button>
+          <button
+            className={`${styles.button} button`}
+            disabled={!!authContext.user || loginMutation.isPending}
+          >
+            Conectare
+          </button>
+          {!!authContext.user && (
+            <span style={{ color: "red" }}>Deja esti conectat!</span>
+          )}
         </form>
       </div>
     </div>
