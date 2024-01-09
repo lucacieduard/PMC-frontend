@@ -93,7 +93,7 @@ const Users = ({ openSidebar }: Props) => {
             initialState={{
               pagination: { paginationModel: { pageSize: 5, page: 0 } },
             }}
-            editMode="row"
+            editMode="cell"
             density="comfortable"
             getRowSpacing={(params) => ({
               top: params.isFirstVisible ? 0 : 5,
