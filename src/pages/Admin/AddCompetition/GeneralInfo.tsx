@@ -37,13 +37,13 @@ const GeneralInfo = ({ rules, changeRules }: Props) => {
           <label htmlFor="date">Perioada competitie</label>
           <div className={styles.d}>
             <input
-              type="date"
+              type="datetime-local"
               id="dSCompetitie"
               name="startCompetitie"
               onChange={changeRules}
             />
             <input
-              type="date"
+              type="datetime-local"
               id="dFCompetitie"
               name="sfarsitCompetitie"
               onChange={changeRules}
@@ -54,13 +54,13 @@ const GeneralInfo = ({ rules, changeRules }: Props) => {
           <label htmlFor="date">Perioada Inscrieri</label>
           <div className={styles.d}>
             <input
-              type="date"
+              type="datetime-local"
               id="dSInscrieri"
               name="startInscrieri"
               onChange={changeRules}
             />
             <input
-              type="date"
+              type="datetime-local"
               id="dFInscrieri"
               name="sfarsitInscrieri"
               onChange={changeRules}
