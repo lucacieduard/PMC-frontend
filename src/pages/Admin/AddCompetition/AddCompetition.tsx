@@ -1,5 +1,4 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import Header from "../../../components/PageHeader/Header";
 import {
   Proba,
   Categorie,
@@ -9,12 +8,12 @@ import styles from "./AddCompetition.module.scss";
 // import Administrative from "./Administrative";
 import Categories from "./Categories";
 import GeneralInfo from "./GeneralInfo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createCompetition } from "../../../utils/fetch/competitions";
 import { toast } from "react-toastify";
 
 type Props = {
-  openSidebar: () => void;
+  changeMessage: (message: string) => void;
 };
 
 export type FormData = {
@@ -27,7 +26,7 @@ export type FormData = {
   categorii: Categorie[];
 };
 
-const AddCompetition = ({ openSidebar }: Props) => {
+const AddCompetition = ({ changeMessage }: Props) => {
   const [rules, setRules] = useState<FormData>({
     nume: "",
     locatie: "",
@@ -97,6 +96,9 @@ const AddCompetition = ({ openSidebar }: Props) => {
     }));
   };
 
+  useEffect(() => {
+    changeMessage("Adauga competitie");
+  }, []);
   const queryClient = useQueryClient();
   const createCompetitionMutation = useMutation({
     mutationFn: createCompetition,
@@ -137,30 +139,27 @@ const AddCompetition = ({ openSidebar }: Props) => {
   });
 
   return (
-    <div className={styles.container}>
-      <Header openSidebar={openSidebar} message="Adaugă competiție" />
-      <main className={styles.page}>
-        <GeneralInfo rules={rules} changeRules={changeHandler} />
-        <Categories
-          addCategory={addCategory}
-          rules={rules}
-          addProba={addProba}
-          deleteCategory={deleteCategory}
-          deleteProba={deleteProba}
-        />
-        {/* <Administrative changeRules={changeHandler} rules={rules} /> */}
-        <button
-          disabled={createCompetitionMutation.isPending}
-          className={`${styles.button} button`}
-          onClick={() => {
-            createCompetitionMutation.mutate(rules);
-          }}
-        >
-          Adauga Competitie
-        </button>
-        {createCompetitionMutation.isError && <span>Error</span>}
-      </main>
-    </div>
+    <main className={styles.page}>
+      <GeneralInfo rules={rules} changeRules={changeHandler} />
+      <Categories
+        addCategory={addCategory}
+        rules={rules}
+        addProba={addProba}
+        deleteCategory={deleteCategory}
+        deleteProba={deleteProba}
+      />
+      {/* <Administrative changeRules={changeHandler} rules={rules} /> */}
+      <button
+        disabled={createCompetitionMutation.isPending}
+        className={`${styles.button} button`}
+        onClick={() => {
+          createCompetitionMutation.mutate(rules);
+        }}
+      >
+        Adauga Competitie
+      </button>
+      {createCompetitionMutation.isError && <span>Error</span>}
+    </main>
   );
 };
 

@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import Header from "../../../components/PageHeader/Header";
 import styles from "./Users.module.scss";
 import {
   DataGrid,
@@ -9,19 +8,23 @@ import {
 } from "@mui/x-data-grid";
 import { getAllUsers } from "../../../utils/fetch/users";
 import { User } from "../../../types/user";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import Action from "./Action";
 
 type Props = {
-  openSidebar: () => void;
+  changeMessage: (message: string) => void;
 };
 
-const Users = ({ openSidebar }: Props) => {
+const Users = ({ changeMessage }: Props) => {
   const queryUsers = useQuery({
     queryKey: ["users"],
     queryFn: getAllUsers,
     staleTime: 1000 * 60 * 5,
   });
+
+  useEffect(() => {
+    changeMessage("Utilizatori");
+  }, []);
 
   const columns: GridColDef[] = useMemo(
     () => [
@@ -80,31 +83,28 @@ const Users = ({ openSidebar }: Props) => {
   if (queryUsers.isError) return <div>Eroare</div>;
 
   return (
-    <div className={styles.container}>
-      <Header openSidebar={openSidebar} message="Utilizatori" />
-      <main className={styles.page}>
-        <div style={{ height: 500, width: "100%" }}>
-          <DataGrid
-            rows={queryUsers.data?.data ? queryUsers.data.data : []}
-            columns={columns}
-            loading={queryUsers.isLoading}
-            getRowId={(row: User) => row._id}
-            pageSizeOptions={[5, 10, 25]}
-            initialState={{
-              pagination: { paginationModel: { pageSize: 5, page: 0 } },
-            }}
-            editMode="cell"
-            density="comfortable"
-            getRowSpacing={(params) => ({
-              top: params.isFirstVisible ? 0 : 5,
-              bottom: params.isLastVisible ? 0 : 5,
-            })}
-            slots={{ toolbar: GridToolbar }}
-            disableRowSelectionOnClick
-          />
-        </div>
-      </main>
-    </div>
+    <main className={styles.page}>
+      <div style={{ height: 500, width: "100%" }}>
+        <DataGrid
+          rows={queryUsers.data?.data ? queryUsers.data.data : []}
+          columns={columns}
+          loading={queryUsers.isLoading}
+          getRowId={(row: User) => row._id}
+          pageSizeOptions={[5, 10, 25]}
+          initialState={{
+            pagination: { paginationModel: { pageSize: 5, page: 0 } },
+          }}
+          editMode="cell"
+          density="comfortable"
+          getRowSpacing={(params) => ({
+            top: params.isFirstVisible ? 0 : 5,
+            bottom: params.isLastVisible ? 0 : 5,
+          })}
+          slots={{ toolbar: GridToolbar }}
+          disableRowSelectionOnClick
+        />
+      </div>
+    </main>
   );
 };
 
