@@ -1,10 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
-type Props = {
-  changeMessage: (message: string) => void;
-};
-
 const Transations = lazy(
   () => import("../../pages/Admin/Trasactions/Transactions")
 );
@@ -15,22 +11,26 @@ const Statistics = lazy(
   () => import("../../pages/Admin/CompetitionStatistics/CompetitionStatistics")
 );
 
-const AdminCompetitionLayout = ({ changeMessage }: Props) => {
+type Props = {
+  openSidebar: () => void;
+};
+
+const AdminCompetitionLayout = ({ openSidebar }: Props) => {
   return (
     <>
       <Suspense fallback={<p>Loading...</p>}>
         <Routes>
           <Route
             path=""
-            element={<Statistics changeMessage={changeMessage} />}
+            element={<Statistics openSidebar={openSidebar} />}
           />
           <Route
             path="tranzactii"
-            element={<Transations changeMessage={changeMessage} />}
+            element={<Transations openSidebar={openSidebar} />}
           />
           <Route
             path="inscrieri"
-            element={<Registrations changeMessage={changeMessage} />}
+            element={<Registrations openSidebar={openSidebar} />}
           />
         </Routes>
       </Suspense>

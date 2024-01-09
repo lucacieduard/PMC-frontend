@@ -1,14 +1,18 @@
-import { useEffect } from "react";
+import AdminCompetitionHeader from "../../../components/AdminCompetitionHeader/AdminCompetitionHeader";
 
 type Props = {
-  changeMessage: (message: string) => void;
+  openSidebar: () => void;
 };
 
-const CompetitionStatistics = ({ changeMessage }: Props) => {
-  useEffect(() => {
-    changeMessage("Competitie - Statistici");
-  }, []);
-  return <div>CompetitionStatistics</div>;
+const CompetitionStatistics = ({ openSidebar }: Props) => {
+  return (
+    <>
+      <AdminCompetitionHeader
+        openSidebar={openSidebar}
+        message="Competitii - Statistici"
+      />
+    </>
+  );
 };
 
 export default CompetitionStatistics;

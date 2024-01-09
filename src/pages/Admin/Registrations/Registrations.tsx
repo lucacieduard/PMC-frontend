@@ -1,15 +1,18 @@
-import { useEffect } from "react";
-import styles from "./Registrations.module.scss";
+import AdminCompetitionHeader from "../../../components/AdminCompetitionHeader/AdminCompetitionHeader";
 
 type Props = {
-  changeMessage: (message: string) => void;
+  openSidebar: () => void;
 };
 
-const Registractions = ({ changeMessage }: Props) => {
-  useEffect(() => {
-    changeMessage("Competitie - Inscrieri");
-  }, []);
-  return <div className={styles.container}>registrations</div>;
+const Registrations = ({ openSidebar }: Props) => {
+  return (
+    <>
+      <AdminCompetitionHeader
+        openSidebar={openSidebar}
+        message="Competitie - Inscrisi"
+      />
+    </>
+  );
 };
 
-export default Registractions;
+export default Registrations;

@@ -1,15 +1,18 @@
-import { useEffect } from "react";
-import styles from "./Tranzactions.module.scss";
+import AdminCompetitionHeader from "../../../components/AdminCompetitionHeader/AdminCompetitionHeader";
 
 type Props = {
-  changeMessage: (message: string) => void;
+  openSidebar: () => void;
 };
 
-const Tranzactions = ({ changeMessage }: Props) => {
-  useEffect(() => {
-    changeMessage("Competitie - Tranzactii");
-  }, []);
-  return <div className={styles.container}>tranzactii</div>;
+const Tranzactions = ({ openSidebar }: Props) => {
+  return (
+    <>
+      <AdminCompetitionHeader
+        message="Competitii - Tranzactii"
+        openSidebar={openSidebar}
+      />
+    </>
+  );
 };
 
 export default Tranzactions;

@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import styles from "./AdminLayout.module.scss";
 import Sidebar from "../../components/Sidebar/Sidebar";
 import { Suspense, lazy, useState } from "react";
-import Header from "../../components/PageHeader/Header";
 const Competitions = lazy(
   () => import("../../pages/Admin/Competitions/Competitions")
 );
@@ -16,36 +15,33 @@ const AdminCompetitionLayout = lazy(() => import("./AdminCompetitionLayout"));
 const AdminLayout = () => {
   const [visible, setVisible] = useState(false);
   const changeVisible = () => setVisible((prev) => !prev);
-  const [message, setMessage] = useState("Competitii");
-  const changeMessage = (message: string) => setMessage(message);
 
   return (
     <div className={styles.container}>
       <Sidebar changeVisible={changeVisible} visibility={visible} />
       <div className={styles.page}>
-        <Header message={message} openSidebar={changeVisible} />
         <Suspense fallback={<p>Loading</p>}>
           <Routes>
             <Route path="competitii">
               <Route
                 index
-                element={<Competitions changeMessage={changeMessage} />}
+                element={<Competitions openSidebar={changeVisible} />}
               />
               <Route
                 path=":id/*"
                 element={
-                  <AdminCompetitionLayout changeMessage={changeMessage} />
+                  <AdminCompetitionLayout  openSidebar={changeVisible}/>
                 }
               />
             </Route>
 
             <Route
               path="adauga"
-              element={<AddCompetition changeMessage={changeMessage} />}
+              element={<AddCompetition openSidebar={changeVisible} />}
             />
             <Route
               path="utilizatori"
-              element={<Users changeMessage={changeMessage} />}
+              element={<Users openSidebar={changeVisible} />}
             />
           </Routes>
         </Suspense>

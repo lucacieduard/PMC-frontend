@@ -3,34 +3,34 @@ import Competition from "./Competition";
 import styles from "./Competitions.module.scss";
 import { ResponseCompetitions } from "../../../types/competitie";
 import { getAllCompetitions } from "../../../utils/fetch/competitions";
-import { useEffect } from "react";
+import Header from "../../../components/PageHeader/Header";
 
 type Props = {
-  changeMessage: (message: string) => void;
+  openSidebar: () => void;
 };
 
-const Competitions = ({ changeMessage }: Props) => {
+const Competitions = ({ openSidebar }: Props) => {
   const { isLoading, isError, data } = useQuery<ResponseCompetitions>({
     queryKey: ["competitions"],
     queryFn: getAllCompetitions,
     staleTime: 1000 * 60 * 5,
   });
-  useEffect(() => {
-    changeMessage("Competitii");
-  }, []);
 
   if (isLoading) return <h1>Loading...</h1>;
   if (isError) return <h1>Error</h1>;
 
   return (
-    <div className={styles.page}>
-      <h1>Toate competitiile</h1>
-      <div className={styles.competitions}>
-        {data?.data.competitions.map((competition) => (
-          <Competition competition={competition} key={competition._id} />
-        ))}
+    <>
+      <Header message="Competitii" openSidebar={openSidebar} />
+      <div className={styles.page}>
+        <h1>Toate competitiile</h1>
+        <div className={styles.competitions}>
+          {data?.data.competitions.map((competition) => (
+            <Competition competition={competition} key={competition._id} />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

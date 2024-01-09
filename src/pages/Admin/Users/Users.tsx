@@ -8,23 +8,20 @@ import {
 } from "@mui/x-data-grid";
 import { getAllUsers } from "../../../utils/fetch/users";
 import { User } from "../../../types/user";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import Action from "./Action";
+import Header from "../../../components/PageHeader/Header";
 
 type Props = {
-  changeMessage: (message: string) => void;
+  openSidebar: () => void;
 };
 
-const Users = ({ changeMessage }: Props) => {
+const Users = ({ openSidebar }: Props) => {
   const queryUsers = useQuery({
     queryKey: ["users"],
     queryFn: getAllUsers,
     staleTime: 1000 * 60 * 5,
   });
-
-  useEffect(() => {
-    changeMessage("Utilizatori");
-  }, []);
 
   const columns: GridColDef[] = useMemo(
     () => [
@@ -83,28 +80,31 @@ const Users = ({ changeMessage }: Props) => {
   if (queryUsers.isError) return <div>Eroare</div>;
 
   return (
-    <main className={styles.page}>
-      <div style={{ height: 500, width: "100%" }}>
-        <DataGrid
-          rows={queryUsers.data?.data ? queryUsers.data.data : []}
-          columns={columns}
-          loading={queryUsers.isLoading}
-          getRowId={(row: User) => row._id}
-          pageSizeOptions={[5, 10, 25]}
-          initialState={{
-            pagination: { paginationModel: { pageSize: 5, page: 0 } },
-          }}
-          editMode="cell"
-          density="comfortable"
-          getRowSpacing={(params) => ({
-            top: params.isFirstVisible ? 0 : 5,
-            bottom: params.isLastVisible ? 0 : 5,
-          })}
-          slots={{ toolbar: GridToolbar }}
-          disableRowSelectionOnClick
-        />
-      </div>
-    </main>
+    <>
+      <Header message="Utilizatori" openSidebar={openSidebar} />
+      <main className={styles.page}>
+        <div style={{ height: 500, width: "100%" }}>
+          <DataGrid
+            rows={queryUsers.data?.data ? queryUsers.data.data : []}
+            columns={columns}
+            loading={queryUsers.isLoading}
+            getRowId={(row: User) => row._id}
+            pageSizeOptions={[5, 10, 25]}
+            initialState={{
+              pagination: { paginationModel: { pageSize: 5, page: 0 } },
+            }}
+            editMode="cell"
+            density="comfortable"
+            getRowSpacing={(params) => ({
+              top: params.isFirstVisible ? 0 : 5,
+              bottom: params.isLastVisible ? 0 : 5,
+            })}
+            slots={{ toolbar: GridToolbar }}
+            disableRowSelectionOnClick
+          />
+        </div>
+      </main>
+    </>
   );
 };
 
