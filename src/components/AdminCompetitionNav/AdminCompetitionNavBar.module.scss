@@ -1,0 +1,30 @@
+@import "../../utils/variables.scss";
+
+.navBar {
+    display: flex;
+    background-color: $background-component;
+    border-radius: 0.326rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: $shadow-component;
+
+    @media (min-width: 800px) {
+        justify-content: flex-end;
+    }
+    a {
+        text-decoration: none;
+        padding: 0.5rem 1.2rem;
+        font-weight: 600;
+        color: $mov;
+
+        &:hover {
+            color: white;
+            background-color: $green-hover;
+        }
+    }
+
+    .active {
+        background-color: $green;
+        color: white;
+    }
+}
