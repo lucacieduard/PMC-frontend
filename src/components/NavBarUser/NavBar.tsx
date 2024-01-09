@@ -98,22 +98,26 @@ const NavBar = () => {
                   className={styles.icon}
                 />
               </IconButton>
-              {show && (
-                <div className={`${styles.subNav}`}>
-                  <p className={styles.name}>
-                    Bună {user.nume} {user.prenume} !
-                  </p>
-                  <button
-                    className={`${styles.logout} button`}
-                    onClick={() => {
-                      logoutMutation.mutate();
-                      setShow(false);
-                    }}
-                  >
-                    Deconectare
-                  </button>
-                </div>
-              )}
+              <div
+                className={
+                  show
+                    ? `${styles.showL} ${styles.subNav}`
+                    : `${styles.hideL} ${styles.subNav}`
+                }
+              >
+                <p className={styles.name}>
+                  Bună {user.nume} {user.prenume} !
+                </p>
+                <button
+                  className={`${styles.logout} button`}
+                  onClick={() => {
+                    logoutMutation.mutate();
+                    setShow(false);
+                  }}
+                >
+                  Deconectare
+                </button>
+              </div>
             </div>
           )}
         </div>

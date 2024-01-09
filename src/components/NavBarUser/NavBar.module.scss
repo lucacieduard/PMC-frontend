@@ -143,6 +143,18 @@
                     }
                 }
             }
+
+            .showL {
+                display: inherit;
+            }
+
+            .hideL {
+                display: inherit;
+
+                @media (min-width: 768px) {
+                    display: none;
+                }
+            }
         }
     }
     .show {
