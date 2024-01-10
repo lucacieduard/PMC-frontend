@@ -3,6 +3,8 @@ import styles from "./UserLayout.module.scss";
 import NavBar from "../../components/NavBarUser/NavBar";
 import Footer from "../../components/FooterUser/Footer";
 import { Suspense, lazy } from "react";
+import Forgot from "../../pages/User/Forgot/Forgot";
+import ResetForgotPassword from "../../pages/User/Forgot/ResetForgotPassword";
 
 const CompetitionsPage = lazy(
   () => import("../../pages/User/Competitions/CompetitionsPage")
@@ -21,8 +23,14 @@ const UserLayout = () => {
               <Route index element={<CompetitionsPage />} />
               <Route path=":id/*" element={<UserCompetitionLayout />} />
             </Route>
-            <Route path="creeaza-cont" element={<Register />} />
-            <Route path="conectare" element={<Login />} />
+            <Route path="/creeaza-cont" element={<Register />} />
+            <Route path="/conectare" element={<Login />} />
+            <Route path="/parola-uitata" element={<Forgot />} />
+            <Route
+              path="/reseteaza-parola/:token"
+              element={<ResetForgotPassword />}
+            />
+            <Route path="*" element={<p>404</p>} />
           </Routes>
         </Suspense>
       </div>

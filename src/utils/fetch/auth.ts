@@ -1,4 +1,4 @@
-import { ResponseLogin, ResponseSignup } from "../../types/user"
+import { ForgotResponse, ResponseLogin, ResponseSignup } from "../../types/user"
 
 export const signup = async (data: {
   nume: string,
@@ -32,7 +32,6 @@ export const login = async (data: { email: string, parola: string }): Promise<Re
     credentials: "include"
   })
   if (!response.ok) throw new Error()
-  console.log(response)
   return response.json()
 }
 
@@ -57,5 +56,41 @@ export const logout = async (): Promise<void> => {
     credentials: "include"
   })
   if (!response.ok) throw new Error()
+  return response.json()
+}
+
+
+export const forgotPassword = async (email: string): Promise<ForgotResponse> => {
+
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/utilizatori/forgotPassword`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email }),
+
+  })
+  if (!response.ok) {
+    const { message } = await response.json()
+    throw new Error(message)
+  }
+  return response.json()
+
+}
+
+export const resetPassword = async (data: { token: string, parola: string }) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/utilizatori/reseteazaParola/${data.token}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ parola: data.parola }),
+
+  })
+  if (!response.ok) {
+    const { message } = await response.json()
+    throw new Error(message)
+  }
+
   return response.json()
 }

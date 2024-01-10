@@ -3,7 +3,11 @@ export type User = {
     nume: string;
     prenume: string;
     email: string;
-    role: "admin" | "user";
+    telefon: string,
+    clubSportiv: string,
+    role: "admin" | "user",
+    parolaSchimbataLa?: Date,
+    creatLa: Date
 }
 
 export type ResponseLogin = {
@@ -14,4 +18,9 @@ export type ResponseLogin = {
 export type ResponseSignup = {
     status: string,
     newUser: User,
+}
+
+export type ForgotResponse = {
+    status: "success" | "fail",
+    message: string
 }
