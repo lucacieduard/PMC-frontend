@@ -9,11 +9,11 @@ import { useContext, useEffect, useState } from "react";
 import { persistLogin } from "./utils/fetch/auth";
 import { AuthContext } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import Loading from "./components/Loading/Loading";
 
 function App() {
   const authContext = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
-
   const persistlogin = async () => {
     try {
       const data = await persistLogin();
@@ -29,7 +29,7 @@ function App() {
   }, []);
 
   return loading ? (
-    <p>Loading </p>
+    <Loading />
   ) : (
     <>
       <ToastContainer

@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { ResponseCompetition } from "../../../types/competitie";
 import { getOneCompetition } from "../../../utils/fetch/competitions";
+import Loading from "../../../components/Loading/Loading";
 
 const CompetitionInfo = () => {
   const { id: slug } = useParams();
@@ -15,7 +16,7 @@ const CompetitionInfo = () => {
     staleTime: 1000 * 60 * 5,
   });
 
-  if (isLoading) return <h2>Loading...</h2>;
+  if (isLoading) return <Loading />;
   if (isError) return <h2>Error</h2>;
 
   const competition = data?.data.competition;

@@ -3,6 +3,7 @@ import CompetitionCard from "./CompetitionCard";
 import styles from "./Competitions.module.scss";
 import { ResponseCompetitions } from "../../../types/competitie";
 import { getAllCompetitions } from "../../../utils/fetch/competitions";
+import Loading from "../../../components/Loading/Loading";
 
 const CompetitionsPage = () => {
   const competitionQuery = useQuery<ResponseCompetitions, Error>({
@@ -12,7 +13,7 @@ const CompetitionsPage = () => {
     // refetchInterval: 1000,
   });
 
-  if (competitionQuery.isLoading) return <h1>Loading</h1>;
+  if (competitionQuery.isLoading) return <Loading />;
   if (competitionQuery.isError) return <h1> Error</h1>;
 
   return (

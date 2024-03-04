@@ -5,6 +5,7 @@ import Footer from "../../components/FooterUser/Footer";
 import { Suspense, lazy } from "react";
 import Forgot from "../../pages/User/Forgot/Forgot";
 import ResetForgotPassword from "../../pages/User/Forgot/ResetForgotPassword";
+import Loading from "../../components/Loading/Loading";
 
 const CompetitionsPage = lazy(
   () => import("../../pages/User/Competitions/CompetitionsPage")
@@ -17,7 +18,7 @@ const UserLayout = () => {
     <div className={styles.container}>
       <NavBar />
       <div className={`${styles.page} wrapper`}>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="competitii">
               <Route index element={<CompetitionsPage />} />

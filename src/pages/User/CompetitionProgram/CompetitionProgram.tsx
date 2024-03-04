@@ -30,6 +30,7 @@ import { getOneCompetition } from "../../../utils/fetch/competitions";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { ResponseCompetition } from "../../../types/competitie";
+import Loading from "../../../components/Loading/Loading";
 const CompetitionProgram = () => {
   const toolbarPluginInstance = toolbarPlugin();
   const { renderDefaultToolbar, Toolbar } = toolbarPluginInstance;
@@ -41,7 +42,7 @@ const CompetitionProgram = () => {
     queryFn: () => getOneCompetition(slug),
     staleTime: 1000 * 60 * 5,
   });
-  if (isLoading) return <h2>Loading...</h2>;
+  if (isLoading) return <Loading />;
   if (isError) return <h2>Error</h2>;
   return (
     <>
